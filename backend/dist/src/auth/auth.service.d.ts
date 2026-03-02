@@ -8,8 +8,10 @@ export declare class AuthService {
     validateUser(email: string, password: string): Promise<{
         id: string;
         email: string;
-        password: string;
+        password: string | null;
         role: import("@prisma/client").$Enums.Role;
+        provider: string | null;
+        providerId: string | null;
         createdAt: Date;
         updatedAt: Date;
     } | null>;
@@ -36,8 +38,10 @@ export declare class AuthService {
     me(userId: string): Promise<{
         id: string;
         email: string;
-        password: string;
+        password: string | null;
         role: import("@prisma/client").$Enums.Role;
+        provider: string | null;
+        providerId: string | null;
         createdAt: Date;
         updatedAt: Date;
     }>;

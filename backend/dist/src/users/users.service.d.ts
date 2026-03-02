@@ -6,24 +6,30 @@ export declare class UsersService {
     findById(id: string): Promise<{
         id: string;
         email: string;
-        password: string;
+        password: string | null;
         role: import("@prisma/client").$Enums.Role;
+        provider: string | null;
+        providerId: string | null;
         createdAt: Date;
         updatedAt: Date;
     } | null>;
     findByEmail(email: string): Promise<{
         id: string;
         email: string;
-        password: string;
+        password: string | null;
         role: import("@prisma/client").$Enums.Role;
+        provider: string | null;
+        providerId: string | null;
         createdAt: Date;
         updatedAt: Date;
     } | null>;
     createUser(email: string, hashedPassword: string, role?: Role): Promise<{
         id: string;
         email: string;
-        password: string;
+        password: string | null;
         role: import("@prisma/client").$Enums.Role;
+        provider: string | null;
+        providerId: string | null;
         createdAt: Date;
         updatedAt: Date;
     }>;

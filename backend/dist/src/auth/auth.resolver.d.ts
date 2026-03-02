@@ -11,8 +11,10 @@ export declare class AuthResolver {
     }): Promise<{
         id: string;
         email: string;
-        password: string;
+        password: string | null;
         role: import("@prisma/client").$Enums.Role;
+        provider: string | null;
+        providerId: string | null;
         createdAt: Date;
         updatedAt: Date;
     }>;
