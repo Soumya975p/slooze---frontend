@@ -1,0 +1,98 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: String!
+  email: String!
+  role: Role!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+enum Role {
+  MANAGER
+  STORE_KEEPER
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type AuthPayload {
+  access_token: String!
+  user: User!
+}
+
+type Product {
+  id: String!
+  name: String!
+  sku: String!
+  stock: Int!
+  price: Float!
+  discount: Float
+  purchase: Float
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  trend: String
+}
+
+type RecentSale {
+  name: String!
+  email: String!
+  amount: Float!
+}
+
+type MonthlyStat {
+  month: String!
+  value: Float!
+}
+
+type WeeklyStat {
+  day: String!
+  revenue: Float!
+  expenses: Float!
+}
+
+type DashboardStats {
+  totalEarnings: Float!
+  totalSales: Int!
+  totalRevenue: Float!
+  subscriptions: Int!
+  recentSales: [RecentSale!]!
+  monthlySalesData: [MonthlyStat!]!
+  weeklyOverviewData: [WeeklyStat!]!
+}
+
+type Query {
+  me: User!
+  products(search: String): [Product!]!
+  product(id: String!): Product!
+  dashboardStats: DashboardStats!
+}
+
+type Mutation {
+  login(email: String!, password: String!): AuthPayload!
+  createProduct(input: CreateProductInput!): Product!
+  updateProduct(id: String!, input: UpdateProductInput!): Product!
+  deleteProduct(id: String!): Boolean!
+}
+
+input CreateProductInput {
+  name: String!
+  sku: String!
+  stock: Int!
+  price: Float!
+  discount: Float
+  purchase: Float
+}
+
+input UpdateProductInput {
+  name: String
+  sku: String
+  stock: Int
+  price: Float
+  discount: Float
+  purchase: Float
+}
